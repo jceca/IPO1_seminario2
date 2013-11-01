@@ -46,6 +46,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ButtonGroup;
 
 public class Seminario2 {
 
@@ -320,14 +323,17 @@ public class Seminario2 {
 		}
 		{
 			miAbrir.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/abrir.png")));
+			miAbrir.setMnemonic('b');
 			mArchivo.add(miAbrir);
 		}
 		{
 			miCargarFoto.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/cargarFoto.png")));
+			miCargarFoto.setMnemonic('C');
 			mArchivo.add(miCargarFoto);
 		}
 		{
 			miCargarComentarios.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/cargarComentarios.png")));
+			miCargarComentarios.setMnemonic('m');
 			mArchivo.add(miCargarComentarios);
 		}
 		{
@@ -335,12 +341,15 @@ public class Seminario2 {
 		}
 		{
 			miGuardar.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/guardar.png")));
+			miGuardar.setMnemonic('G');;
 			mArchivo.add(miGuardar);
 		}
 		{
+			mEdicion.setMnemonic('E');
 			menuBar.add(mEdicion);
 		}
 		{
+			mAyuda.setMnemonic('y');
 			menuBar.add(mAyuda);
 		}
 	}
