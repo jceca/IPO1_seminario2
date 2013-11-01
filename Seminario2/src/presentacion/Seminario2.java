@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagLayout;
 
 import javax.swing.border.Border;
@@ -42,6 +43,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -86,6 +88,11 @@ public class Seminario2 {
 	private final JMenuItem miGuardar = new JMenuItem("Guardar");
 	private final JMenu mEdicion = new JMenu("Edición");
 	private final JMenu mAyuda = new JMenu("Ayuda");
+	private final JMenu mTamanoLetra = new JMenu("Tamano Letra");
+	private final JRadioButtonMenuItem radioPequena = new JRadioButtonMenuItem("Pequeña");
+	private final JRadioButtonMenuItem radioNormal = new JRadioButtonMenuItem("Normal");
+	private final JRadioButtonMenuItem radioGrande = new JRadioButtonMenuItem("Grande");
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -349,6 +356,24 @@ public class Seminario2 {
 			menuBar.add(mEdicion);
 		}
 		{
+			mEdicion.add(mTamanoLetra);
+		}
+		{
+			buttonGroup.add(radioPequena);
+			radioPequena.addActionListener(new RadioPequenaActionListener());
+			mTamanoLetra.add(radioPequena);
+		}
+		{
+			buttonGroup.add(radioNormal);
+			radioNormal.addActionListener(new RadioNormalActionListener());
+			mTamanoLetra.add(radioNormal);
+		}
+		{
+			buttonGroup.add(radioGrande);
+			radioGrande.addActionListener(new RadioGrandeActionListener());
+			mTamanoLetra.add(radioGrande);
+		}
+		{
 			mAyuda.setMnemonic('y');
 			menuBar.add(mAyuda);
 		}
@@ -425,6 +450,21 @@ public class Seminario2 {
 			}else{
 				System.out.println("El usuario ha cancelado el proceso de lectura.");
 			}
+		}
+	}
+	private class RadioPequenaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			txtArComentarios.setFont(new Font(txtArComentarios.getFont().getFontName(), txtArComentarios.getFont().getStyle(), 8));
+		}
+	}
+	private class RadioNormalActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			txtArComentarios.setFont(new Font(txtArComentarios.getFont().getFontName(), txtArComentarios.getFont().getStyle(), 12));
+		}
+	}
+	private class RadioGrandeActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			txtArComentarios.setFont(new Font(txtArComentarios.getFont().getFontName(), txtArComentarios.getFont().getStyle(), 16));
 		}
 	}
 }
