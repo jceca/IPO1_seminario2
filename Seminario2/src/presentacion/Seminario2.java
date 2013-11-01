@@ -51,6 +51,9 @@ import javax.swing.JSeparator;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Seminario2 {
 
@@ -155,6 +158,8 @@ public class Seminario2 {
 		txtApellidos.setColumns(10);
 		txtNombre.setColumns(10);
 		frame = new JFrame();
+		frame.addWindowListener(new FrameWindowListener());
+		frame.addWindowListener(new FrameWindowListener());
 		frame.setBounds(100, 100, 483, 511);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -465,6 +470,12 @@ public class Seminario2 {
 	private class RadioGrandeActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			txtArComentarios.setFont(new Font(txtArComentarios.getFont().getFontName(), txtArComentarios.getFont().getStyle(), 16));
+		}
+	}
+	private class FrameWindowListener extends WindowAdapter {
+		@Override
+		public void windowClosing(WindowEvent e) {
+			JOptionPane.showMessageDialog(frame, "Gracias por utilizar nuestra aplicación", "Cerrar la aplicación", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 }
