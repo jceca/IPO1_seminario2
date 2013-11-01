@@ -209,7 +209,7 @@ public class Seminario2 {
 		{
 			lblFoto.setBorder(new TitledBorder(null, "Foto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
-			lblFoto.setIcon(new ImageIcon(Seminario2.class.getResource("/recursos/058.png")));
+			lblFoto.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/111.png")));
 			scrollPane.setViewportView(lblFoto);
 		}
 		{
