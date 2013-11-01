@@ -159,7 +159,6 @@ public class Seminario2 {
 		txtNombre.setColumns(10);
 		frame = new JFrame();
 		frame.addWindowListener(new FrameWindowListener());
-		frame.addWindowListener(new FrameWindowListener());
 		frame.setBounds(100, 100, 483, 511);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
