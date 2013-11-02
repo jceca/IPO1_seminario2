@@ -59,14 +59,14 @@ public class Seminario2 {
 
 	private JFrame frame;
 	private final JPanel pnlFicha = new JPanel();
-	private final JLabel lblExpediente = new JLabel("Núm. expediente:");
+	private final JLabel lblExpediente = new JLabel("Num. expediente:");
 	private final JTextField txtExpediente = new JTextField();
 	private final JButton btnCargarFoto = new JButton("Cargar foto...");
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JLabel lblNombre = new JLabel("Nombre:");
 	private final JLabel lblApellidos = new JLabel("Apellidos:");
 	private final JLabel lblDni = new JLabel("DNI:");
-	private final JLabel lblTelefono = new JLabel("Teléfono:");
+	private final JLabel lblTelefono = new JLabel("Telefono:");
 	private final JLabel lblFoto = new JLabel("");
 	private final JTextField txtNombre = new JTextField();
 	private final JTextField txtApellidos = new JTextField();
