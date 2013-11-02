@@ -61,7 +61,7 @@ public class Seminario2 {
 	private final JPanel pnlFicha = new JPanel();
 	private final JLabel lblExpediente = new JLabel("Num. expediente:");
 	private final JTextField txtExpediente = new JTextField();
-	private final JButton btnCargarFoto = new JButton("Cargar foto...");
+	private final JButton btnCargarFoto = new JButton("Cargar foto..");
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JLabel lblNombre = new JLabel("Nombre:");
 	private final JLabel lblApellidos = new JLabel("Apellidos:");
