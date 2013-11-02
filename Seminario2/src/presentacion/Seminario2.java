@@ -89,10 +89,10 @@ public class Seminario2 {
 	private final JMenuItem miCargarComentarios = new JMenuItem("Cargar Comentarios...");
 	private final JSeparator separator = new JSeparator();
 	private final JMenuItem miGuardar = new JMenuItem("Guardar");
-	private final JMenu mEdicion = new JMenu("Edición");
+	private final JMenu mEdicion = new JMenu("Edicion");
 	private final JMenu mAyuda = new JMenu("Ayuda");
 	private final JMenu mTamanoLetra = new JMenu("Tamano Letra");
-	private final JRadioButtonMenuItem radioPequena = new JRadioButtonMenuItem("Pequeña");
+	private final JRadioButtonMenuItem radioPequena = new JRadioButtonMenuItem("Pequena");
 	private final JRadioButtonMenuItem radioNormal = new JRadioButtonMenuItem("Normal");
 	private final JRadioButtonMenuItem radioGrande = new JRadioButtonMenuItem("Grande");
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -135,7 +135,7 @@ public class Seminario2 {
 		/* Ahora el TextArea */
 		txtArComentarios.addFocusListener(new MyFocusListener());
 		
-		/* Modificamos la actuacion del Jformat en el teléfono */
+		/* Modificamos la actuacion del Jformat en el telefono */
 		MaskFormatter formatoTlfno;
 		try{
 			formatoTlfno = new MaskFormatter("'(###')' ### '- ### '- ###");
@@ -145,7 +145,7 @@ public class Seminario2 {
 			e.printStackTrace();
 		}
 		
-		/* Modificamos la actuacion del Jformat en el teléfono */
+		/* Modificamos la actuacion del Jformat en el dni */
 		MaskFormatter formatoDNI;
 		try{
 			formatoDNI = new MaskFormatter("########' -U");
@@ -474,7 +474,7 @@ public class Seminario2 {
 	private class FrameWindowListener extends WindowAdapter {
 		@Override
 		public void windowClosing(WindowEvent e) {
-			JOptionPane.showMessageDialog(frame, "Gracias por utilizar nuestra aplicación", "Cerrar la aplicación", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Gracias por utilizar nuestra aplicacion", "Cerrar la aplicacion", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 }
