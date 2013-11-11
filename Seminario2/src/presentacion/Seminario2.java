@@ -135,6 +135,10 @@ public class Seminario2 {
 		/* Ahora el TextArea */
 		txtArComentarios.addFocusListener(new MyFocusListener());
 		
+		/* Adding ActionListener to the menu actions (Cargar Foto y Cargar Comentarios) */
+		miCargarFoto.addActionListener(new BtnCargarFotoActionListener());
+		miCargarComentarios.addActionListener(new BtnCargarComentariosActionListener());
+		
 		/* Modificamos la actuacion del Jformat en el telefono */
 		MaskFormatter formatoTlfno;
 		try{
