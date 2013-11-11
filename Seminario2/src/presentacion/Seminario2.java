@@ -430,6 +430,7 @@ public class Seminario2 {
 	private class BtnCargarComentariosActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fcAbrir = new JFileChooser();
+			fcAbrir.setFileFilter(new FileTypeFilter());
 			int valorDevuelto = fcAbrir.showOpenDialog(frame);
 			
 			/* Recogemos el nombre del fichero seleccionado por el usuario */
