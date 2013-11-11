@@ -326,6 +326,7 @@ public class Seminario2 {
 			gbc_btnGuardar.anchor = GridBagConstraints.EAST;
 			gbc_btnGuardar.gridx = 4;
 			gbc_btnGuardar.gridy = 8;
+			btnGuardar.addActionListener(new BtnGuardarActionListener());
 			btnGuardar.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/guardar.png")));
 			pnlFicha.add(btnGuardar, gbc_btnGuardar);
 		}
@@ -480,6 +481,21 @@ public class Seminario2 {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			JOptionPane.showMessageDialog(frame, "Gracias por utilizar nuestra aplicacion", "Cerrar la aplicacion", JOptionPane.PLAIN_MESSAGE);
+		}
+	}
+	private class BtnGuardarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			JFileChooser selecArchivo = new JFileChooser();
+			selecArchivo.setDialogTitle("Guardar como:");   
+			 
+			int userSelection = selecArchivo.showSaveDialog(frame);
+			 
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+			    File fileToSave = selecArchivo.getSelectedFile();
+			    
+			    System.out.println("Guardar como: " + fileToSave.getAbsolutePath());
+			}
+			
 		}
 	}
 }
