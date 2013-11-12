@@ -362,6 +362,7 @@ public class Seminario2 {
 		}
 		{
 			miGuardar.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/guardar.png")));
+			miGuardar.addActionListener(new BtnGuardarActionListener());
 			miGuardar.setMnemonic('G');;
 			mArchivo.add(miGuardar);
 		}
@@ -496,11 +497,14 @@ public class Seminario2 {
 			int userSelection = selecArchivo.showSaveDialog(frame);
 			 
 			if (userSelection == JFileChooser.APPROVE_OPTION) {
-			    String filename = selecArchivo.getSelectedFile().getPath();
-			    File fileToSave = new File(filename);
-			    if(!fileToSave.exists()){
+			    /* Name of the file */
+				String filename = selecArchivo.getSelectedFile().getPath();
+			    
+				/* Creating the file with the name given before */
+				File fileToSave = new File(filename);
+			    if(!fileToSave.exists()){ /* Exists? */
 			    	try {
-						fileToSave.createNewFile();
+						fileToSave.createNewFile(); /* If not, create it */
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -510,7 +514,21 @@ public class Seminario2 {
 			    try {
 					FileWriter fw = new FileWriter(fileToSave.getAbsoluteFile());
 					BufferedWriter bw = new BufferedWriter(fw);
-					bw.write("hello");
+					
+					/* Writting the file with the data in the fields */
+					bw.write(txtExpediente.getText());
+					bw.newLine();
+					bw.write(txtNombre.getText());
+					bw.newLine();
+					bw.write(txtApellidos.getText());
+					bw.newLine();
+					bw.write(txtDNI.getText());
+					bw.newLine();
+					bw.write(txtTelefono.getText());
+					bw.newLine();
+					bw.write(txtArComentarios.getText());
+					
+					/* Close the file */
 					bw.close();
 					
 					System.out.println("Done");
@@ -519,6 +537,10 @@ public class Seminario2 {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}else if(userSelection == JFileChooser.CANCEL_OPTION){
+				JOptionPane.showMessageDialog(selecArchivo, "Has cancelado la opción.");
+			}else if(userSelection == JFileChooser.ERROR_OPTION){
+				JOptionPane.showMessageDialog(selecArchivo, "Error al intentar guardar el fichero.");
 			}
 		}
 	}
