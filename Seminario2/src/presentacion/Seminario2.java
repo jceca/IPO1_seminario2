@@ -343,6 +343,7 @@ public class Seminario2 {
 			menuBar.add(mArchivo);
 		}
 		{
+			miAbrir.addActionListener(new MiAbrirActionListener());
 			miAbrir.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/abrir.png")));
 			miAbrir.setMnemonic('b');
 			mArchivo.add(miAbrir);

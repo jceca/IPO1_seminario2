@@ -12,14 +12,14 @@ public class FileTypeFilter extends FileFilter {
 		if (!aceptar){
 			String extension = getExtension(f);
 			if(extension != null){
-				aceptar = extension.equals("txt");
+				aceptar = extension.equals("alu");
 			}
 		}
 		return aceptar;
 	}
 	 
 	public String getDescription() {
-		return "TXT Documents (*.txt)";
+		return "ALU Documents (*.alu)";
 	}
 	
 	private String getExtension(File f) {
