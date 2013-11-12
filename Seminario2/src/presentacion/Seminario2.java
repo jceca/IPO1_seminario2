@@ -40,6 +40,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -52,9 +53,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -101,6 +102,9 @@ public class Seminario2 {
 	private final JRadioButtonMenuItem radioNormal = new JRadioButtonMenuItem("Normal");
 	private final JRadioButtonMenuItem radioGrande = new JRadioButtonMenuItem("Grande");
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final JMenuItem miAcercaDe = new JMenuItem("Acerca de...");
+	private final JSeparator separator_1 = new JSeparator();
+	private final JMenuItem miSalir = new JMenuItem("Salir");
 
 	/**
 	 * Launch the application.
@@ -343,6 +347,7 @@ public class Seminario2 {
 			menuBar.add(mArchivo);
 		}
 		{
+			miAbrir.addActionListener(new MiAbrirActionListener());
 			miAbrir.setIcon(new ImageIcon(Seminario2.class.getResource("/presentacion/abrir.png")));
 			miAbrir.setMnemonic('b');
 			mArchivo.add(miAbrir);
@@ -365,6 +370,13 @@ public class Seminario2 {
 			miGuardar.addActionListener(new BtnGuardarActionListener());
 			miGuardar.setMnemonic('G');;
 			mArchivo.add(miGuardar);
+		}
+		{
+			mArchivo.add(separator_1);
+		}
+		{
+			miSalir.addActionListener(new MiSalirActionListener());
+			mArchivo.add(miSalir);
 		}
 		{
 			mEdicion.setMnemonic('E');
@@ -391,6 +403,10 @@ public class Seminario2 {
 		{
 			mAyuda.setMnemonic('y');
 			menuBar.add(mAyuda);
+		}
+		{
+			miAcercaDe.addActionListener(new MiAcercaDeActionListener());
+			mAyuda.add(miAcercaDe);
 		}
 	}
 	private class TxtExpedienteKeyListener extends KeyAdapter {
@@ -492,6 +508,7 @@ public class Seminario2 {
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser selecArchivo = new JFileChooser();
+			selecArchivo.setFileFilter(new FileTypeFilter());
 			selecArchivo.setDialogTitle("Guardar como:");
 			 
 			int userSelection = selecArchivo.showSaveDialog(frame);
@@ -542,6 +559,59 @@ public class Seminario2 {
 			}else if(userSelection == JFileChooser.ERROR_OPTION){
 				JOptionPane.showMessageDialog(selecArchivo, "Error al intentar guardar el fichero.");
 			}
+		}
+	}
+	private class MiAbrirActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser selecArchivo = new JFileChooser();
+			selecArchivo.setFileFilter(new FileTypeFilter());
+			selecArchivo.setDialogTitle("Abrir:");
+			
+			int userSelection = selecArchivo.showOpenDialog(frame);
+			
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+				/* Name of the file selected */
+				String filename = selecArchivo.getSelectedFile().getPath();
+				String [] rellenar;
+			    BufferedReader br;
+				try {
+					br = new BufferedReader(new FileReader(filename));
+			        StringBuilder sb = new StringBuilder();
+			        String line = br.readLine();
+
+			        while (line != null) {
+			            sb.append(line);
+			            sb.append("\n");
+			            line = br.readLine();
+			        }
+			        
+			        String informacion = sb.toString();
+			        rellenar = informacion.split("\n");
+			        
+			        txtExpediente.setText(rellenar[0]);
+			        txtNombre.setText(rellenar[1]);
+			        txtApellidos.setText(rellenar[2]);
+			        txtDNI.setText(rellenar[3]);
+			        txtTelefono.setText(rellenar[4]);
+			        txtArComentarios.setText(rellenar[5]);
+			        
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
+	}
+	private class MiAcercaDeActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(frame, "Javier Garcia Ceca");
+		}
+	}
+	private class MiSalirActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 }
