@@ -619,7 +619,7 @@ public class Seminario2 {
 		        if (result == JOptionPane.YES_OPTION) {
 		          System.exit(0);
 		        } else if (result == JOptionPane.NO_OPTION) {
-		          System.out.println("Do nothing");
+		          System.out.println("No hacer nada");
 		        }
 		}
 	}
