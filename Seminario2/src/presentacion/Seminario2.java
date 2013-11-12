@@ -55,6 +55,11 @@ import javax.swing.JOptionPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Seminario2 {
 
 	private JFrame frame;
@@ -486,16 +491,35 @@ public class Seminario2 {
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser selecArchivo = new JFileChooser();
-			selecArchivo.setDialogTitle("Guardar como:");   
+			selecArchivo.setDialogTitle("Guardar como:");
 			 
 			int userSelection = selecArchivo.showSaveDialog(frame);
 			 
 			if (userSelection == JFileChooser.APPROVE_OPTION) {
-			    File fileToSave = selecArchivo.getSelectedFile();
+			    String filename = selecArchivo.getSelectedFile().getPath();
+			    File fileToSave = new File(filename);
+			    if(!fileToSave.exists()){
+			    	try {
+						fileToSave.createNewFile();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			    }
 			    
-			    System.out.println("Guardar como: " + fileToSave.getAbsolutePath());
+			    try {
+					FileWriter fw = new FileWriter(fileToSave.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write("hello");
+					bw.close();
+					
+					System.out.println("Done");
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			
 		}
 	}
 }
