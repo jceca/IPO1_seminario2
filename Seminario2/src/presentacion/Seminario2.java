@@ -575,10 +575,11 @@ public class Seminario2 {
 				String [] rellenar;
 			    BufferedReader br;
 				try {
+					/* Reading from file selected */
 					br = new BufferedReader(new FileReader(filename));
 			        StringBuilder sb = new StringBuilder();
 			        String line = br.readLine();
-
+			        
 			        while (line != null) {
 			            sb.append(line);
 			            sb.append("\n");
@@ -588,6 +589,7 @@ public class Seminario2 {
 			        String informacion = sb.toString();
 			        rellenar = informacion.split("\n");
 			        
+			        /* Setting the array in each txt */
 			        txtExpediente.setText(rellenar[0]);
 			        txtNombre.setText(rellenar[1]);
 			        txtApellidos.setText(rellenar[2]);
