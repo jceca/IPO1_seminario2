@@ -607,11 +607,18 @@ public class Seminario2 {
 	}
 	private class MiAcercaDeActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(frame, "Javier Garcia Ceca");
+			JOptionPane.showMessageDialog(frame, "Javier Garcia Ceca\nVersion: 1.0");
 		}
 	}
 	private class MiSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			int result = JOptionPane.showConfirmDialog(frame,
+		            "¿Desea salir de la aplicación?");
+		        if (result == JOptionPane.YES_OPTION) {
+		          System.exit(0);
+		        } else if (result == JOptionPane.NO_OPTION) {
+		          System.out.println("Do nothing");
+		        }
 		}
 	}
 }
